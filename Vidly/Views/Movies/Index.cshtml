@@ -6,6 +6,9 @@
 }
 
 <h2>Movies</h2>
+@Html.ActionLink("New Movie", "New", "Movies", new { id = 0 }, new { @class = "btn btn-info my-3" })
+@Html.ActionLink("New Genre", "CreateGenre", "Movies", new { id = 0 }, new { @class = "btn btn-info my-3" })
+
 @if (!Model.Any())
 {
     <p class="alert alert-primary">We don't have any movie yet.</p>
