@@ -16,7 +16,7 @@ namespace Vidly.Models
         public MembershipType MembershipType { get; set; }
 
         [Display(Name = "Membership Type")]
-        [Required( ErrorMessage = "You must select a membership")]
+        [Required( ErrorMessage = "You must select a membership.")]
         public byte MembershipTypeId { get; set; }
 
         [Display(Name = "Date of Birth")]
