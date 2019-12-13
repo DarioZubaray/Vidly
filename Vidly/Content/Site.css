@@ -27,3 +27,11 @@ textarea {
     margin-top: 1rem !important;
     margin-bottom: 1rem !important;
 }
+
+.input-validation-error {
+    border: 2px solid crimson;
+}
+
+.field-validation-error {
+    color: crimson;
+}	
