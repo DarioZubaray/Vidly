@@ -18,8 +18,6 @@ namespace Vidly.Dtos
 
         public byte MembershipTypeId { get; set; }
 
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
-        [Min18IfAMember]
         public DateTime? Birthdate { get; set; }
     }
 }
