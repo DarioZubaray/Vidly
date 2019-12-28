@@ -81,7 +81,6 @@ namespace Vidly.Controllers.Api
 
             _context.Customers.Remove(customerInDB);
             _context.SaveChanges();
-
         }
     }
 }
