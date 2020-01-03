@@ -50,7 +50,9 @@ else
 @section scripts
 {
     <script>
-        $(document).ready(function(){
+        $(document).ready(function () {
+            $("customers-table").DataTable();
+
             $("#customers-table").on("click", "js-delete", function () {
                 var button = $(this);
 
