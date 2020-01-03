@@ -18,12 +18,6 @@
 <h2>Customers</h2>
 @Html.ActionLink("New Customer", "New", "Customers", new { id = 0}, new { @class = "btn btn-info my-3" })
 
-@if (!Model.Any())
-{
-    <p class="alert alert-primary">We don't have any customers yet.</p>
-}
-else
-{
     <table id="customers-table" class="table table-bordered table-hover">
         <thead>
             <tr>
@@ -32,26 +26,35 @@ else
                 <th>Delete</th>
             </tr>
         </thead>
-        <tbody>
-            @foreach (var customer in Model)
-            {
-                <tr>
-                    <td>@Html.ActionLink(customer.Name, "Edit", "Customers", new { id = customer.Id }, null)</td>
-                    <td>@customer.MembershipType.Name</td>
-                    <td>
-                        <button data-customer-id="@customer.Id" class="btn-link js-delete">Delete</button>
-                    </td>
-                </tr>
-            }
-        </tbody>
+        <tbody></tbody>
     </table>
-}
-
 @section scripts
 {
     <script>
         $(document).ready(function () {
-            $("customers-table").DataTable();
+            $("#customers-table").DataTable({
+                ajax: {
+                    url: "/api/customers",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "name",
+                        render: function (data, type, customer) {
+                            return "<a href='/customer/edit" + customer.id + "'>" + customer.name + "</a>";
+                        }
+                    },
+                    {
+                        data: "membershipType.name"
+                    },
+                    {
+                        data: "id",
+                        render: function (data) {
+                            return "<button class='btn-link js-delete' data-customer-id=" + data + ">Delete</button>"
+                        }
+                    }
+                ]
+            });
 
             $("#customers-table").on("click", "js-delete", function () {
                 var button = $(this);
